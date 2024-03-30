@@ -1,52 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "../thunks";
+import { fetchLogin } from "./authThunks";
+import { AuthState } from "../../types";
 
-interface authSlice {
-  status: string;
-  email: string | null;
-  accessToken: string | null;
-}
+const initialState: AuthState = {
+  user: null,
+  token: null,
+  isLoading: false,
+  error: null,
+};
 
 export const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    status: "",
-    email: null,
-    accessToken: "",
-    funca: {},
-    loading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
-    login: (state: authSlice) => {
-      state.email = "andresjose543@gmail.com";
-      state.status = "Succesfull";
-      state.accessToken = "123abc";
-    },
-    logout: (state: authSlice) => {
-      state.email = "";
-      state.status = "Sesion closed";
-      state.accessToken = "";
+    logout: (state) => {
+      state.user = null;
+      state.token = null;
+      state.isLoading = false;
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
-    // Agrega los casos para manejar el estado de la solicitud de inicio de sesión
-    builder.addMatcher(
-      loginUser.endpoints.getUnicorns.matchPending,
-      (state) => {
-        state.loading = true;
-      }
-    );
-    builder.addMatcher(
-      loginUser.endpoints.getUnicorns.matchFulfilled,
-      (state, action) => {
-        state.loading = false;
-        state.funca = action.payload;
-      }
-    );
+    builder
+      .addCase(fetchLogin.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchLogin.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(fetchLogin.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "Ha ocurrido un error.";
+      });
   },
 });
 
-export const { login, logout } = authSlice.actions;
-
-export default authSlice;
+export const { logout } = authSlice.actions;

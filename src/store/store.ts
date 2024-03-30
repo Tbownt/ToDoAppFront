@@ -1,14 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import authSlice from "./auth/authSlice";
-import { loginUser } from "./thunks";
-import { setupListeners } from "@reduxjs/toolkit/query";
+import { useDispatch } from "react-redux";
+import { authSlice } from "./auth/authSlice";
+import { coffeSlice } from "./crud/coffeSlice";
 
+// ...
 export const store = configureStore({
   reducer: {
-    [loginUser.reducerPath]: loginUser.reducer,
+    auth: authSlice.reducer,
+    coffe: coffeSlice.reducer,
   },
-  middleware: (getdefaultMiddleware) =>
-    getdefaultMiddleware().concat(loginUser.middleware),
 });
 
-setupListeners(store.dispatch);
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;

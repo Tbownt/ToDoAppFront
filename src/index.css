@@ -1,3 +1,35 @@
 body {
-  background-color: rgb(200, 174, 174);
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.login {
+  position: relative;
+  min-height: 100vh;
+  background-color: #f0e1c2;
+  width: 100%;
+}
+.box-area {
+  width: 55%;
+  border-radius: 15px !important;
+}
+
+.box-bg {
+  background-color: #3d1f19;
+}
+.welcome_text {
+  font-size: 24px;
+}
+
+@media screen and (width <= 667px) {
+  .box-area {
+    width: 100%;
+  }
+}
+
+@media screen and (width < 1200px) {
+  .box-area {
+    width: 75%;
+  }
 }

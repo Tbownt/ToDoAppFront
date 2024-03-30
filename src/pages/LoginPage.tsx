@@ -1,12 +1,9 @@
-import { Button } from "antd";
-import { login } from "../store/auth/authSlice";
-import { useDispatch } from "react-redux";
+import LoginForm from "../components/LoginForm";
 
 export const LoginPage = () => {
-  const dispatch = useDispatch();
   return (
-    <>
-      <Button onClick={() => dispatch(login())}>Ingresar</Button>
-    </>
+    <div className="container-fluid d-flex justify-content-center align-items-center login">
+      <LoginForm />
+    </div>
   );
 };
