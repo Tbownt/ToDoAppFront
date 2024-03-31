@@ -1,13 +1,10 @@
-import { Button } from "antd";
+import { Home } from "./pages/Home";
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello</h1>
-      <>
-        <Button>Ingresar</Button>
-      </>
-    </div>
+    <>
+      <Home />
+    </>
   );
 };
 

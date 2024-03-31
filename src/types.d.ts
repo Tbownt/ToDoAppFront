@@ -1,7 +1,7 @@
 interface CoffeResponse {
   _id: string;
   name: string | void;
-  price: number;
+  quantity: number;
   size: string;
   type_of_milk: string;
   type_of_coffe: string;

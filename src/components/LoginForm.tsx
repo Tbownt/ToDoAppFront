@@ -53,7 +53,7 @@ const LoginForm = () => {
           </p>
           <small
             className="text-white text-wrap text-center"
-            style={{ fontSize: "16px" }}
+            style={{ fontSize: "14px" }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </small>
@@ -109,17 +109,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-// const dispatch = useDispatch<AppDispatch>();
-// const coffeeId = "66083e2f1492af03e8f10ea4";
-// const coffeeData = {
-//   name: "moccachino",hite
-//   size: "grande",
-//   type_of_milk: "normal",
-//   type_of_coffee: "negro",
-//   note: "soy una nota",
-// };
-
-// useEffect(() => {
-//   dispatch(modifyCoffee({ id: coffeeId, coffeeData }));
-// }, []);
