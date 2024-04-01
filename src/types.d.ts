@@ -1,16 +1,30 @@
-interface CoffeResponse {
-  _id: string;
-  name: string | void;
+interface CoffeeResponse {
+  _id?: string;
+  coffeName: string;
+  quantity: number;
+  clientName: string;
+  size: string;
+  note: string;
+  price?: number;
+  decaffeinated: boolean;
+  toppings: [];
+}
+
+interface PostCoffee {
+  coffeName: string;
   quantity: number;
   size: string;
-  type_of_milk: string;
-  type_of_coffe: string;
+  clientName: string;
   note: string;
+  decaffeinated: boolean;
+  toppings: [];
 }
-interface CoffeState {
-  coffe: CoffeResponse[] | null;
+interface CoffeeState {
+  coffees: CoffeeResponse[] | null;
   isLoading: boolean;
+  coffeeById: CoffeeResponse | null | object;
   error: string | null | unknown;
+  status: number | null | unknown;
 }
 
 interface AuthState {
@@ -35,15 +49,19 @@ export interface UserInterface {
   password: string;
 }
 
-export interface ModifyCoffeeData {
+export interface ModifyCoffeData {
   name?: string;
   size?: string;
-  type_of_milk?: string;
-  type_of_coffee?: string;
+  clientName?: string;
+  quantity?: number;
   note?: string;
 }
 
 interface ModifyCoffeePayload {
   id: string;
-  coffeeData: ModifyCoffeeData;
+  coffeeData: ModifyCoffeData;
+}
+
+interface coffeeNameOptions {
+  name: string;
 }

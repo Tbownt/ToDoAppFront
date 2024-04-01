@@ -4,6 +4,11 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.home-container {
+  background-color: #f0e1c2;
+  min-height: 100vh;
+}
+
 .login {
   position: relative;
   min-height: 100vh;

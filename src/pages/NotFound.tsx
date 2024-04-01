@@ -1,3 +1,9 @@
+import { CreateCoffee } from "../components/CreateCoffee";
+
 export const NotFound = () => {
-  return <div>NotFound</div>;
+  return (
+    <div>
+      <CreateCoffee />
+    </div>
+  );
 };

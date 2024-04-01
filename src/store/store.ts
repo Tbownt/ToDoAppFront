@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { authSlice } from "./auth/authSlice";
-import { coffeSlice } from "./crud/coffeSlice";
+import { coffeSlice } from "./crud/coffeeSlice";
 
 // ...
 export const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
-    coffe: coffeSlice.reducer,
+    coffee: coffeSlice.reducer,
   },
 });
 
