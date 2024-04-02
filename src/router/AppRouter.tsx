@@ -1,6 +1,6 @@
 import App from "../App";
-import { Route, Routes } from "react-router-dom";
-import { NotFound } from "../pages/NotFound";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { CreateOrder } from "../pages/CreateOrder";
 import { LoginPage } from "../pages/LoginPage";
 // import { CrudCoffee } from "../pages/CrudCoffee";
 import { useStateManagment } from "../hooks/useStateManagment";
@@ -12,21 +12,21 @@ export const AppRouter = () => {
 
   const { user } = authState;
 
-  // if (!user) {
-  //   return (
-  //     <Routes>
-  //       <Route path="/*" element={<LoginPage />} />
-  //     </Routes>
-  //   );
-  // }
+  if (!user) {
+    return (
+      <Routes>
+        <Route path="/*" element={<LoginPage />} />
+      </Routes>
+    );
+  }
 
   return (
     <Routes>
       <Route path="/" element={<App />} />
-      {/* <Route path="/crudCoffee" element={<CrudCoffee />} /> */}
+      <Route path="/createCoffee" element={<CreateOrder />} />
       <Route path="/coffee/:id" element={<CoffePage />} />
       <Route path="/coffeeModify/:id" element={<ModifyCoffee />} />
-      <Route path="/*" element={<NotFound />} />
+      <Route path="/*" element={<Navigate to={"/"} />} />
     </Routes>
   );
 };

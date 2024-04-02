@@ -16,7 +16,7 @@ const initialState: CoffeeResponse = {
 };
 
 export const useCoffeeForm = () => {
-  const { dispatch } = useStateManagment();
+  const { dispatch, navigate } = useStateManagment();
   const [coffeeForm, setCoffeeForm] = useState<CoffeeResponse>(initialState);
 
   const handleChange = (
@@ -70,6 +70,7 @@ export const useCoffeeForm = () => {
     } else {
       dispatch(postCoffee(coffeeForm));
       setCoffeeForm(initialState);
+      navigate("/");
       Swal.fire({
         icon: "success",
         title: "Your order has been saved succesfully",

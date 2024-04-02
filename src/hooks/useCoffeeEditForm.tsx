@@ -77,25 +77,37 @@ export const useCoffeeEditForm = () => {
     // Realiza las aserciones aquí antes de enviar los cambios
     if (!modifiedCoffee.quantity || modifiedCoffee.quantity <= 0) {
       // La cantidad debe ser un número positivo
-      console.error("Please provide a valid quantity.");
+      Swal.fire({
+        icon: "error",
+        title: "Please provide a valid quantity.",
+      });
       return;
     }
 
     if (!modifiedCoffee.coffeeName) {
       // El nombre del café es obligatorio
-      console.error("Please select a coffee.");
+      Swal.fire({
+        icon: "error",
+        title: "Please select a coffee.",
+      });
       return;
     }
 
     if (!modifiedCoffee.clientName.trim()) {
       // El nombre del cliente es obligatorio
-      console.error("Please provide a client name.");
+      Swal.fire({
+        icon: "error",
+        title: "Please provide a client name.",
+      });
       return;
     }
 
     if (!modifiedCoffee.size) {
       // El tamaño del café es obligatorio
-      console.error("Please select a size.");
+      Swal.fire({
+        icon: "error",
+        title: "Please select a size.",
+      });
       return;
     }
 

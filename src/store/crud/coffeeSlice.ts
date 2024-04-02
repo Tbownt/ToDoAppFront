@@ -21,7 +21,10 @@ export const coffeSlice = createSlice({
   initialState,
   reducers: {
     updateCoffes: (state, { payload }) => {
-      state.coffees?.filter((value) => value._id !== payload);
+      state.coffees = state.coffees?.filter((value) => value._id !== payload);
+    },
+    clearState: (state) => {
+      state.coffeeById = null;
     },
   },
   extraReducers: (builder) => {
@@ -103,4 +106,4 @@ export const coffeSlice = createSlice({
   },
 });
 
-export const { updateCoffes } = coffeSlice.actions;
+export const { updateCoffes, clearState } = coffeSlice.actions;

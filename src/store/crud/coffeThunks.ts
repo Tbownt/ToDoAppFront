@@ -27,8 +27,25 @@ export const postCoffee = createAsyncThunk(
 export const editCoffee = createAsyncThunk(
   "coffees/updateCoffee",
   async (coffeeData: EditedCoffe) => {
-    const { id, clientName, coffeeName, quantity, size } = coffeeData;
-    const data = { clientName, coffeeName, quantity, size };
+    const {
+      id,
+      clientName,
+      coffeeName,
+      quantity,
+      size,
+      decaffeinated,
+      note,
+      toppings,
+    } = coffeeData;
+    const data = {
+      clientName,
+      coffeeName,
+      quantity,
+      size,
+      decaffeinated,
+      note,
+      toppings,
+    };
     const response = await axios.put<EditedCoffe>(`${coffeeApi}/${id}`, data);
     return response.data;
   }

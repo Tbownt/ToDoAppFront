@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import { useStateManagment } from "./useStateManagment";
 import { deleteCoffee } from "../store/crud/coffeThunks";
+import { updateCoffes } from "../store/crud/coffeeSlice";
 
 export const useCardMethods = () => {
   const { navigate, dispatch } = useStateManagment();
@@ -28,6 +29,7 @@ export const useCardMethods = () => {
           text: "Your Order has been deleted.",
           icon: "success",
         });
+        dispatch(updateCoffes(id));
         dispatch(deleteCoffee(id));
       }
     });

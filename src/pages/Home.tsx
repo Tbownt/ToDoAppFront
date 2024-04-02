@@ -7,12 +7,14 @@ import { useStateManagment } from "../hooks/useStateManagment";
 
 import { useEffect } from "react";
 import { fetchCoffee } from "../store/crud/coffeThunks";
+import { clearState } from "../store/crud/coffeeSlice";
 
 export const Home = () => {
   const { navigate, dispatch } = useStateManagment();
 
   useEffect(() => {
     dispatch(fetchCoffee());
+    dispatch(clearState());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,10 +22,7 @@ export const Home = () => {
     <div className="home-container">
       <Navbar />
       <div className="container">
-        <div
-          className="row align-items-center my-5"
-          style={{ backgroundColor: "#FFF", borderRadius: "12px" }}
-        >
+        <div className="row align-items-center my-5 home-title">
           <div className="col-md-9">
             <h1 className="h1-title">
               Welcome to your Personal CoffeShop, What would you like to order
@@ -39,7 +38,7 @@ export const Home = () => {
           <Button
             type="text"
             className="mb-5 order-btn"
-            onClick={() => navigate("/crudCoffe")}
+            onClick={() => navigate("/createCoffee")}
           >
             Make an order
             <CoffeeOutlined />
@@ -52,7 +51,6 @@ export const Home = () => {
             below -
           </h2>
         </div>
-
         <CardCoffee />
       </div>
     </div>

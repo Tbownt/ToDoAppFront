@@ -19,7 +19,7 @@ interface PostCoffee {
   toppings: [];
 }
 interface CoffeeState {
-  coffees: CoffeeResponse[] | null;
+  coffees: CoffeeResponse[] | null | undefined;
   isLoading: boolean;
   coffeeById: CoffeeResponse | null;
   error: string | null | unknown;
