@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { CoffeeResponse, ModifyCoffeePayload, PostCoffee } from "../../types";
+import { CoffeeResponse, EditedCoffe, PostCoffee } from "../../types";
 const coffeeApi = import.meta.env.VITE_CRUD_API;
 
 export const fetchCoffee = createAsyncThunk("coffee/fetch", async () => {
@@ -24,25 +24,20 @@ export const postCoffee = createAsyncThunk(
   }
 );
 
-export const modifyCoffee = createAsyncThunk(
-  "coffee/modify",
-  async ({ id, coffeeData }: ModifyCoffeePayload) => {
-    try {
-      const response = await axios.put<CoffeeResponse>(
-        `${coffeeApi}/${id}`,
-        coffeeData
-      );
-      if (response.status === 200) {
-        console.log("modificado");
-        return response.data;
-      }
-    } catch (error) {
-      throw new Error("Hubo un error al modificar el café.");
-    }
+export const editCoffee = createAsyncThunk(
+  "coffees/updateCoffee",
+  async (coffeeData: EditedCoffe) => {
+    const { id, clientName, coffeeName, quantity, size } = coffeeData;
+    const data = { clientName, coffeeName, quantity, size };
+    const response = await axios.put<EditedCoffe>(`${coffeeApi}/${id}`, data);
+    return response.data;
   }
 );
 
-export const deleteCoffee = createAsyncThunk("coffee/delete", async (id) => {
-  const response = await axios.delete<CoffeeResponse>(`${coffeeApi}/${id}`);
-  return response.status;
-});
+export const deleteCoffee = createAsyncThunk(
+  "coffee/delete",
+  async (id: string) => {
+    const response = await axios.delete(`${coffeeApi}/${id}`);
+    return response.status;
+  }
+);

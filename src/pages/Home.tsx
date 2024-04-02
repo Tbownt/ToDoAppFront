@@ -1,42 +1,31 @@
 import { Navbar } from "../components/Navbar";
-import coffeImg from "/coffe.png";
-import { CardDemo } from "../components/CardDemo";
+import coffeImg from "/coffee.png";
+import { CardCoffee } from "../components/CardCoffee";
 import { Button } from "antd";
 import { CoffeeOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useStateManagment } from "../hooks/useStateManagment";
 
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchCoffe } from "../store/crud/coffeThunks";
-
-// import { AppDispatch, RootState } from "../store/store";
+import { useEffect } from "react";
+import { fetchCoffee } from "../store/crud/coffeThunks";
 
 export const Home = () => {
-  const navigate = useNavigate();
-  // const dispatch = useDispatch<AppDispatch>();
-  // const state = useSelector((state: RootState) => state.coffe);
-  // const { coffe } = state;
-  // useEffect(() => {
-  //   dispatch(fetchCoffe());
-  // }, []);
+  const { navigate, dispatch } = useStateManagment();
 
-  // console.log(state);
+  useEffect(() => {
+    dispatch(fetchCoffee());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="home-container">
       <Navbar />
       <div className="container">
-        <div className="row align-items-center my-5">
+        <div
+          className="row align-items-center my-5"
+          style={{ backgroundColor: "#FFF", borderRadius: "12px" }}
+        >
           <div className="col-md-9">
-            <h1
-              style={{
-                color: "#A15C39",
-                textAlign: "start",
-                fontWeight: "bold",
-                backgroundColor: "#FFF",
-                borderRadius: "12px",
-              }}
-              className="text"
-            >
+            <h1 className="h1-title">
               Welcome to your Personal CoffeShop, What would you like to order
               today?
             </h1>
@@ -48,20 +37,23 @@ export const Home = () => {
 
         <div className="d-flex justify-content-center  flex-column align-items-center">
           <Button
-            type="dashed"
-            className="mb-5"
+            type="text"
+            className="mb-5 order-btn"
             onClick={() => navigate("/crudCoffe")}
           >
             Make an order
             <CoffeeOutlined />
           </Button>
-          <h2 className="font-weight-normal">
-            - Check out <small className="font-weight-bold">Our Menu </small>{" "}
+          <h2 className="font-weight-normal" style={{ textAlign: "center" }}>
+            - Check out{" "}
+            <small className="font-weight-bold" style={{ fontSize: "28px" }}>
+              Our Menu{" "}
+            </small>{" "}
             below -
           </h2>
         </div>
 
-        <CardDemo />
+        <CardCoffee />
       </div>
     </div>
   );

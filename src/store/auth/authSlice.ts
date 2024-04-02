@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchLogin } from "./authThunks";
+import { postLogin } from "./authThunks";
 import { AuthState } from "../../types";
 
 const initialState: AuthState = {
@@ -22,16 +22,16 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchLogin.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(fetchLogin.fulfilled, (state, action) => {
+      .addCase(postLogin.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user;
         state.token = action.payload.token;
       })
-      .addCase(fetchLogin.rejected, (state, action) => {
+      .addCase(postLogin.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(postLogin.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || "Ha ocurrido un error.";
       });

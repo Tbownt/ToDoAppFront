@@ -4,7 +4,8 @@ import { UserOutlined } from "@ant-design/icons";
 import { useCoffeeForm } from "../hooks/useCoffeeForm";
 import { coffeeNameOptions } from "../types";
 import { coffeeInfo, options } from "../utils/coffeLabels";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Navbar } from "./Navbar";
 
 const { TextArea } = Input;
 
@@ -18,31 +19,25 @@ export const CreateCoffee = () => {
     handleCheckBox,
     handleMultipleSelect,
     handleSubmit,
+    checkFields,
+    isDisabled,
   } = useCoffeeForm();
-
-  const [isDisabled, setIsDisabled] = useState(true);
-
-  const checkFields = () => {
-    const { clientName, coffeName, quantity, size } = coffeeForm;
-    if (clientName.length < 3 || !coffeName || quantity === 0 || !size) {
-      setIsDisabled(true);
-    } else {
-      setIsDisabled(false);
-    }
-  };
 
   useEffect(() => {
     checkFields();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coffeeForm]);
 
+  console.log(coffeeForm);
+
   return (
     <>
+      <Navbar />
       <Form>
         <Select
           style={{ width: 120 }}
           onChange={handleSelectNameChange}
-          value={coffeeForm.coffeName}
+          value={coffeeForm.coffeeName}
           defaultValue={"Menu"}
         >
           {coffeeInfo.map((value: coffeeNameOptions) => (
@@ -65,7 +60,7 @@ export const CreateCoffee = () => {
           name="quantity"
           value={coffeeForm.quantity}
           min={1}
-          onChange={(e) => handleInputNumber(e)}
+          onChange={(e) => handleInputNumber(e!)}
           required
         />
         <Select

@@ -6,7 +6,7 @@ import { useStateManagment } from "./useStateManagment";
 import { postCoffee } from "../store/crud/coffeThunks";
 
 const initialState: CoffeeResponse = {
-  coffeName: "",
+  coffeeName: "",
   clientName: "",
   quantity: 0,
   size: "",
@@ -31,7 +31,7 @@ export const useCoffeeForm = () => {
   const handleSelectNameChange = (value: string) => {
     setCoffeeForm({
       ...coffeeForm,
-      coffeName: value,
+      coffeeName: value,
     });
   };
 
@@ -57,7 +57,7 @@ export const useCoffeeForm = () => {
   const handleSubmit = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     event.preventDefault();
     if (
-      !coffeeForm.coffeName ||
+      !coffeeForm.coffeeName ||
       !coffeeForm.clientName ||
       !coffeeForm.quantity ||
       !coffeeForm.size
@@ -79,6 +79,17 @@ export const useCoffeeForm = () => {
     }
   };
 
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const checkFields = () => {
+    const { clientName, coffeeName: coffeName, quantity, size } = coffeeForm;
+    if (clientName.length < 3 || !coffeName || quantity === 0 || !size) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  };
+
   return {
     coffeeForm,
     handleChange,
@@ -89,5 +100,7 @@ export const useCoffeeForm = () => {
     handleCheckBox,
     handleMultipleSelect,
     handleSubmit,
+    isDisabled,
+    checkFields,
   };
 };

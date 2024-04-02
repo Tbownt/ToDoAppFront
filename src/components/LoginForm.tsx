@@ -1,34 +1,13 @@
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../store/store";
 import { Button, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { UserInterface } from "../types";
-import { useState } from "react";
-import { fetchLogin } from "../store/auth/authThunks";
-import { useNavigate } from "react-router-dom";
+import { useAuthForm } from "../hooks/useAuthForm";
+import { useStateManagment } from "../hooks/useStateManagment";
 
 const LoginForm = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+  const { handleSubmit, handleChange, user } = useAuthForm();
+  const { authState } = useStateManagment();
 
-  const [user, setUser] = useState<UserInterface>({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleSubmit = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    event.preventDefault();
-    if (user) {
-      console.log(user);
-      dispatch(fetchLogin(user));
-      navigate("/");
-    }
-  };
+  const { isLoading } = authState;
 
   return (
     <div className="row p-3 box-bg shadow box-area">
@@ -97,8 +76,12 @@ const LoginForm = () => {
               type="primary"
               size="large"
               onClick={(event) => handleSubmit(event)}
-              disabled={user.email.length <= 0 ? true : false}
-              style={{ color: "white" }}
+              loading={isLoading}
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                fontWeight: "500",
+              }}
             >
               Login
             </Button>

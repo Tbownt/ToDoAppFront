@@ -1,29 +1,47 @@
+import { Card } from "antd";
+import coffeeImg from "/coffee.png";
 import { useStateManagment } from "../hooks/useStateManagment";
+import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import Meta from "antd/es/card/Meta";
+import { useCardMethods } from "../hooks/useCardMethods";
 
-const CardCoffee = () => {
+export const CardCoffee = () => {
   const { coffeState } = useStateManagment();
 
-  const coffee = coffeState.coffee;
+  const { coffees } = coffeState;
+
+  const { deleteCoffeeCard, modifyCoffeePage, showCoffePageById } =
+    useCardMethods();
+
   return (
-    <>
-      {coffee ? (
-        <div className="">
-          {coffee?.map((card) => (
-            <div key={card._id}>
-              <p>Nombre: {card.coffeName}</p>
-              <p>Cantidad: {card.quantity}</p>
-              <p>Tamaño: {card.size}</p>
-              <p>Nota: {card.note}</p>
-              <p>Descafeinado: {card.decaffeinated ? "Si" : "No"}</p>
-              <p>Precio: {card.price}</p>
+    <div className="row">
+      {coffees!.length > 0
+        ? coffees?.map((value) => (
+            <div className="col-md-4" key={value._id}>
+              <Card
+                style={{ width: 300, marginTop: "15px" }}
+                cover={<img alt="coffe" src={coffeeImg} />}
+                actions={[
+                  <EyeOutlined
+                    key="show"
+                    onClick={() => showCoffePageById(value._id!)}
+                  />, // Pasar el ID al hacer clic
+                  <EditOutlined
+                    key="edit"
+                    onClick={() => modifyCoffeePage(value._id!)}
+                  />,
+                  <DeleteOutlined
+                    key="delete"
+                    style={{ color: "red" }}
+                    onClick={() => deleteCoffeeCard(value._id!)}
+                  />,
+                ]}
+              >
+                <Meta title={value.coffeeName} description={value.note} />
+              </Card>
             </div>
-          ))}
-        </div>
-      ) : (
-        <></>
-      )}
-    </>
+          ))
+        : null}
+    </div>
   );
 };
-
-export default CardCoffee;

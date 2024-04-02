@@ -27,6 +27,22 @@ body {
   font-size: 24px;
 }
 
+.h1-title {
+  color: #a15c39;
+  text-align: center;
+  font-weight: bold;
+}
+.order-btn {
+  color: #a15c39;
+  font-weight: 500;
+  border-radius: 7px;
+}
+
+.order-btn:hover {
+  color: #3d1f19 !important;
+  border-color: #a15c39 !important;
+}
+
 @media screen and (width <= 667px) {
   .box-area {
     width: 100%;

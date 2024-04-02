@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   deleteCoffee,
-  fetchCoffee as fetchCoffee,
+  fetchCoffee,
   fetchCoffeeById,
-  modifyCoffee,
+  editCoffee,
   postCoffee,
 } from "./coffeThunks";
 import { CoffeeState } from "../../types";
 
 const initialState: CoffeeState = {
   coffees: [],
-  coffeeById: {},
+  coffeeById: null,
   isLoading: false,
   error: null,
   status: null,
@@ -19,7 +19,11 @@ const initialState: CoffeeState = {
 export const coffeSlice = createSlice({
   name: "coffe",
   initialState,
-  reducers: {},
+  reducers: {
+    updateCoffes: (state, { payload }) => {
+      state.coffees?.filter((value) => value._id !== payload);
+    },
+  },
   extraReducers: (builder) => {
     //Get coffe
     builder.addCase(fetchCoffee.fulfilled, (state, { payload }) => {
@@ -46,9 +50,10 @@ export const coffeSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase(fetchCoffeeById.rejected, (state, { payload }) => {
+    builder.addCase(fetchCoffeeById.rejected, (state, { error }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.error = error.message; // Actualiza el estado de error con el mensaje de error
+      state.coffeeById = null; // Reinicia el estado de coffeeById en caso de error
     });
 
     //Post coffe
@@ -67,16 +72,16 @@ export const coffeSlice = createSlice({
     });
 
     //Put Coffe
-    builder.addCase(modifyCoffee.fulfilled, (state, { payload }) => {
+    builder.addCase(editCoffee.fulfilled, (state, { payload }) => {
       state.status = payload;
       state.isLoading = false;
       state.error = null;
     });
-    builder.addCase(modifyCoffee.pending, (state) => {
+    builder.addCase(editCoffee.pending, (state) => {
       state.status = "pending";
       state.isLoading = true;
     });
-    builder.addCase(modifyCoffee.rejected, (state, { payload }) => {
+    builder.addCase(editCoffee.rejected, (state, { payload }) => {
       state.error = "Your order could not be shipped";
       state.status = payload;
     });
@@ -97,3 +102,5 @@ export const coffeSlice = createSlice({
     });
   },
 });
+
+export const { updateCoffes } = coffeSlice.actions;

@@ -12,3 +12,9 @@ export const coffeeInfo: coffeeNameOptions[] = [
   { name: "Latte" },
   { name: "Capuccino" },
 ];
+
+export const sizeOptions = [
+  { label: "Small", value: "Small" },
+  { label: "Medium", value: "Medium" },
+  { label: "Large", value: "Large" },
+];
