@@ -26,6 +26,11 @@ body {
   align-items: center;
 }
 
+.card-coffe-container {
+  width: 100%;
+  margin-top: 15px;
+}
+
 .box-area-coffePage {
   background-color: #fff;
   border-radius: 15px;
@@ -57,6 +62,18 @@ label {
   margin-bottom: 5px;
 }
 
+/* Headers */
+
+.menu-title {
+  text-align: center;
+  font-weight: 300;
+}
+
+.small-menu {
+  font-size: 24px;
+  font-weight: 700;
+}
+
 .card-properties {
   font-weight: 500;
   font-size: 18px;
@@ -67,6 +84,18 @@ label {
   text-align: start;
 }
 .h1-title {
+  text-align: center;
+}
+
+.coffe-title {
+  font-weight: bold;
+  font-size: 42px;
+  color: #fff;
+}
+
+.coffe-subtitle {
+  font-size: 14px;
+  text-wrap: wrap;
   text-align: center;
 }
 
@@ -93,6 +122,7 @@ label {
   font-weight: 500;
   border-radius: 7px;
 }
+/* los botones de ant design no pueden ser editados o se considera mala practica segun su documentacion y la mejor manera de editarlos es utilizando "!important" */
 
 .order-btn:hover {
   color: #3d1f19 !important;
@@ -106,6 +136,16 @@ label {
 .logout-btn:hover {
   color: #fff !important;
   background-color: #ec393c !important;
+}
+
+.login-btn {
+  background-color: #fff;
+  color: black;
+  font-weight: 500;
+}
+
+.delete-btn {
+  color: #ec393c !important;
 }
 
 /* Image */
@@ -143,6 +183,12 @@ label {
 }
 .form {
   min-height: 100vh;
+}
+
+/* background */
+.login-background {
+  background-color: #ead1a8;
+  border-radius: 15px;
 }
 
 /* Responsive Styles */

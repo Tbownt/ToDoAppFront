@@ -19,7 +19,7 @@ export const CardCoffee = () => {
         ? coffees?.map((value) => (
             <div className="col-md-4" key={value._id}>
               <Card
-                style={{ width: 300, marginTop: "15px" }}
+                className="card-coffe-container"
                 cover={<img alt="coffe" src={coffeeImg} />}
                 actions={[
                   <EyeOutlined
@@ -32,7 +32,7 @@ export const CardCoffee = () => {
                   />,
                   <DeleteOutlined
                     key="delete"
-                    style={{ color: "red" }}
+                    className="delete-btn"
                     onClick={() => deleteCoffeeCard(value._id!)}
                   />,
                 ]}

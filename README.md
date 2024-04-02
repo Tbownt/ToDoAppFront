@@ -1,49 +1,44 @@
 # CoffeAPP
 
-Welcome to CoffeAPP! This application is designed to manage user authentication and provide CRUD functionalities for managing coffee cards. Inspired by a café atmosphere, CoffeAPP aims to streamline the process of managing coffee cards while providing a clean, simple, and scalable codebase.
+¡Bienvenido a CoffeAPP! Esta aplicación está diseñada para gestionar la autenticación de usuarios y proporcionar funcionalidades CRUD para gestionar tarjetas de café. Inspirada en el ambiente de una cafetería, CoffeAPP tiene como objetivo simplificar el proceso de gestionar tarjetas de café al mismo tiempo que proporciona una base de código limpia, simple y escalable.
 
-## Features
+## Características:
 
-- **User Authentication**: Secure login system to access the application.
-- **CRUD Operations**: Create, Read, Update, and Delete coffee cards.
-- **Simple and Scalable Code**: Follows SOLID principles to ensure clean, simple, and scalable codebase.
-- **Redux Usage**: This application uses Redux as the main state manager, especially for the management of the CRUD to be performed and the actions to be taken through the page
-- **Consistent Design and User Experience**: Emphasis on consistent design and user experience to enhance usability.
+- **Autenticación de Usuarios**: Sistema de inicio de sesión seguro para acceder a la aplicación.
+- **Operaciones CRUD**: Crear, Leer, Actualizar y Eliminar tarjetas de café.
+- **Código Simple y Escalable**: Sigue los principios SOLID para garantizar una base de código limpia, simple y escalable.
+- **Uso de Redux**: Esta aplicación utiliza Redux como el principal gestor de estado, especialmente para la gestión del CRUD a realizar y las acciones a realizar a través de la página.
+- **Diseño y Experiencia de Usuario Consistentes**: Énfasis en un diseño y experiencia de usuario consistentes para mejorar la usabilidad.
 
-## Installation
+## Instalación:
 
-To run CoffeAPP locally, follow these steps:
+Para ejecutar CoffeAPP localmente, sigue estos pasos:
 
-1. Clone the repository:
+1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/your/repository.git
+   git clone https://github.com/Tbownt/ToDoAppFront
    ```
 
-2. Install dependencies:
+2. Instala sus dependencias:
 
    ```bash
    yarn install
    ```
 
-3. Run the application:
+3. Ejecuta la aplicación:
 
    ```bash
    yarn dev
    ```
 
-## Technologies Used
+## Tecnologías Utilizadas:
 
 - **Frontend**: React.ts
-- **State Management**: Redux ToolKit
-- **Styling**: Bootstrap 4 (Grid), Ant Design
-- **Authentication**: API from dev container
+- **Manejo de estado**: Redux ToolKit
+- **Estilado**: Bootstrap 4 (Grid), Ant Design
+- **Autenticacion**: API desde contenedor de desarrollo
 
-## Documentation
-
-- **S.O.L.I.D Principles**: The codebase follows the SOLID principles to ensure maintainability and scalability. You can refer to [this link](https://en.wikipedia.org/wiki/SOLID) for more information on SOLID principles.
-- **Component Structure**: The application follows a clear and organized component structure to facilitate ease of development and maintenance.
-
-## Contributors
+## Contribuidor:
 
 - [Tbownt](https://github.com/tbownt)

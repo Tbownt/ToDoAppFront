@@ -69,7 +69,6 @@ export const ModifyCoffee = () => {
                   value={modifiedCoffee.clientName}
                   onChange={(e) => handleEditChange(e)}
                   name="clientName"
-                  style={{ marginBottom: "16px" }}
                   required
                 />
               </div>
@@ -88,7 +87,7 @@ export const ModifyCoffee = () => {
               <div className="col-md">
                 <label htmlFor="size">Size: </label>
                 <Select
-                  style={{ width: "100%", marginBottom: "16px" }}
+                  className="select"
                   value={modifiedCoffee.size}
                   onChange={(value) => handleSelectSizeEdit(value)}
                   placeholder="Select Size"

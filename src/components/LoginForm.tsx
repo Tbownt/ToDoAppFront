@@ -11,13 +11,7 @@ const LoginForm = () => {
 
   return (
     <div className="row p-3 box-bg shadow box-area">
-      <div
-        className="col-md-6  d-flex justify-content-center align-items-center flex-column"
-        style={{
-          backgroundColor: "#ead1a8",
-          borderRadius: "15px",
-        }}
-      >
+      <div className="col-md-6  d-flex justify-content-center align-items-center flex-column login-background">
         <div className="d-flex align-items-center flex-column">
           <img
             src="https://www.svgrepo.com/show/449609/coffe.svg"
@@ -25,16 +19,8 @@ const LoginForm = () => {
             className="img-fluid"
             width="35%"
           />
-          <p
-            className="text-white"
-            style={{ fontWeight: "bold", fontSize: "42px" }}
-          >
-            CoffeShop
-          </p>
-          <small
-            className="text-white text-wrap text-center"
-            style={{ fontSize: "14px" }}
-          >
+          <p className="coffe-title">CoffeShop</p>
+          <small className="coffe-subtitle">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </small>
         </div>
@@ -77,11 +63,7 @@ const LoginForm = () => {
               size="large"
               onClick={(event) => handleSubmit(event)}
               loading={isLoading}
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                fontWeight: "500",
-              }}
+              className="login-btn"
             >
               Login
             </Button>

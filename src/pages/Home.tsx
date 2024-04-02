@@ -36,19 +36,15 @@ export const Home = () => {
 
         <div className="d-flex justify-content-center  flex-column align-items-center">
           <Button
-            type="text"
+            type="default"
             className="mb-5 order-btn"
             onClick={() => navigate("/createCoffee")}
           >
             Make an order
             <CoffeeOutlined />
           </Button>
-          <h2 className="font-weight-normal" style={{ textAlign: "center" }}>
-            - Check out{" "}
-            <small className="font-weight-bold" style={{ fontSize: "28px" }}>
-              Our Menu{" "}
-            </small>{" "}
-            below -
+          <h2 className="menu-title">
+            - Check out <small className="small-menu">Our Menu </small> below -
           </h2>
         </div>
         <CardCoffee />

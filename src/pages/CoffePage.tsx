@@ -47,7 +47,8 @@ export const CoffePage = () => {
                 </small>
               </p>
               <p className="card-properties">
-                Note: <small>{coffeeById.note}</small>
+                Note:{" "}
+                <small>{coffeeById.note ? coffeeById.note : "none"}</small>
               </p>
             </div>
             <img src={coffeeImg} alt="coffe" className="page-coffeImg" />
