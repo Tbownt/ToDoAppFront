@@ -4,6 +4,7 @@ import { fetchCoffeeById } from "../store/crud/coffeThunks";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import coffeeImg from "/coffee.png";
+import { NotFound } from "../components/NotFound";
 
 export const CoffePage = () => {
   const { dispatch, coffeState } = useStateManagment();
@@ -54,7 +55,9 @@ export const CoffePage = () => {
             <img src={coffeeImg} alt="coffe" className="page-coffeImg" />
             <blockquote> - Life is not the same without coffee- </blockquote>
           </div>
-        ) : null}
+        ) : (
+          <NotFound />
+        )}
       </div>
     </div>
   );

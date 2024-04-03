@@ -26,6 +26,14 @@ body {
   align-items: center;
 }
 
+.box-area-not-found {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 70%;
+  text-align: left;
+  padding: 50px;
+}
+
 .card-coffe-container {
   width: 100%;
   margin-top: 15px;
@@ -78,6 +86,15 @@ label {
   font-weight: 500;
   font-size: 18px;
   text-transform: uppercase;
+}
+
+.not-found {
+  font-size: 36px;
+  font-weight: 500;
+}
+.not-found-subtitle {
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .welcome_text {
@@ -199,6 +216,9 @@ label {
   .box-area-coffePage {
     width: 85%;
     padding: 25px;
+  }
+  .box-area-not-found {
+    width: 85%;
   }
   .form-background {
     width: 80%;
